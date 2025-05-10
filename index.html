@@ -5,23 +5,13 @@
   <title>Random 4 Digit PIN</title>
 </head>
 <body>
-  <h1>Random 4 Digit PIN Generator</h1>
-  <p>Send a GET request with <code>?json</code> to get a 4-digit PIN as JSON.</p>
-
   <script>
-    if (window.location.search.includes("json")) {
-      const pin = Math.floor(1000 + Math.random() * 9000);
-      const json = JSON.stringify({ pin });
+    // Generate PIN
+    const pin = Math.floor(1000 + Math.random() * 9000);
+    const response = JSON.stringify({ pin });
 
-      // Return as raw JSON only if it's being used as a fetch (headless/no DOM)
-      const isHeadless = !document.body || !document.body.children.length;
-      if (isHeadless) {
-        document.write(json);
-      } else {
-        // Try to replace whole body with just JSON text
-        document.body.innerText = json;
-      }
-    }
+    // Output to browser and fetch()
+    document.body.innerText = response;
   </script>
 </body>
 </html>
